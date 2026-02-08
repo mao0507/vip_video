@@ -1,0 +1,7 @@
+---
+alwaysApply: true
+---
+# Commit 訊息規則
+- 生成的 commit 訊息必須簡潔，限制在 50 字元以內。
+- git commit 訊息請遵循 Conventional Commits 
+- git commit 訊息 請使用繁體中文
