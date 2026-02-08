@@ -1,0 +1,12 @@
+---
+description: "前端規則"
+globs: ["app/**/*.ts", "components/**/*.ts"]
+---
+
+- 一律使用 Composition API
+- 使用 `<script setup lang="ts">`
+- Props / Emits 必須明確定義型別
+- ref、computed等 必須明確定義型別
+- Function 一律使用 ECMAScript 6 ，必須明確定義型別
+- 小型元件優先，避免單一元件過大
+- UI 與商業邏輯分離（必要時抽 composables）

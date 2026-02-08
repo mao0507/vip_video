@@ -1,0 +1,8 @@
+---
+description: "後端 API 規則"
+globs: ["server/**/*.ts", "api/**/*.ts"]
+---
+
+- 一律使用 TypeScript + NestJS
+- API 路由需放在 `api/` 資料夾內。
+- 資料驗證需使用 Zod 套件。

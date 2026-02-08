@@ -1,0 +1,28 @@
+---
+description: "全專案統一規範"
+alwaysApply: true
+---
+
+# 語言與框架
+- 一律使用 TypeScript，不允許 JavaScript。
+- 一律使用 Eslint 、 Prettier
+- 一律使用 ES6 風格
+- Prettier 請參照資料夾最外層的檔案，給前後端專案都加入
+
+# 命名規範
+- 變數與函式：camelCase
+- 類別與元件：PascalCase
+- 檔案名稱：kebab-case
+
+# API 與資料處理
+- API 呼叫統一使用 axios，集中管理於 `utils/api.ts`。
+- 不允許直接在元件中呼叫 fetch。
+
+# 文件與註解
+- 所有函式需加上 JSDoc 註解。
+- 所有文件需使用 Markdown 格式。
+
+# Commit 訊息規則
+- 生成的 commit 訊息必須簡潔，限制在 50 字元以內。
+- git commit 訊息請遵循 Conventional Commits 
+- git commit 訊息 請使用繁體中文
