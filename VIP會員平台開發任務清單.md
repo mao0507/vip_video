@@ -12,16 +12,16 @@
 
 ### 任務 1.1：建立 NestJS 後端專案架構
 
-- [ ] 使用 Nest CLI 建立新專案
+- [x] 使用 Nest CLI 建立新專案
   ```bash
   npm i -g @nestjs/cli
   nest new backend-api
   ```
-- [ ] 選擇包管理器（建議 pnpm 或 yarn）
+- [x] 選擇包管理器（建議 pnpm 或 yarn）
 - [ ] 調整 `tsconfig.json` 設定
   - 啟用 `strict` 模式
   - 設定 `paths` 別名（@/src/*）
-- [ ] 建立專案資料夾結構
+- [x] 建立專案資料夾結構
   ```
   src/
   ├── common/              # 共用模組
@@ -36,18 +36,18 @@
   │   ├── jwt.config.ts
   │   └── app.config.ts
   ├── modules/             # 功能模組
-  │   ├── auth/           
-  │   ├── users/          
-  │   ├── videos/         
-  │   ├── images/         
-  │   ├── tags/           
-  │   └── categories/     
+  │   ├── auth/
+  │   ├── users/
+  │   ├── videos/
+  │   ├── images/
+  │   ├── tags/
+  │   └── categories/
   ├── entities/            # 資料庫實體
   ├── dto/                 # 資料傳輸對象
-  ├── main.ts             
-  └── app.module.ts       
+  ├── main.ts
+  └── app.module.ts
   ```
-- [ ] 安裝必要依賴套件
+- [x] 安裝必要依賴套件
   ```bash
   pnpm add @nestjs/config @nestjs/typeorm typeorm pg
   pnpm add @nestjs/jwt @nestjs/passport passport passport-jwt
@@ -60,24 +60,24 @@
 
 ### 任務 1.2：建立 Vue3 + TypeScript 前端專案
 
-- [ ] 使用 Vite 建立 Vue3 + TypeScript 專案
+- [x] 使用 Vite 建立 Vue3 + TypeScript 專案
   ```bash
   npm create vite@latest frontend -- --template vue-ts
   cd frontend
   pnpm install
   ```
-- [ ] 安裝核心依賴
+- [x] 安裝核心依賴
   ```bash
   pnpm add vue-router@4 pinia axios
   pnpm add element-plus @element-plus/icons-vue
   pnpm add @vueuse/core dayjs
   pnpm add -D unplugin-vue-components unplugin-auto-import
   ```
-- [ ] 配置 `vite.config.ts`
+- [x] 配置 `vite.config.ts`
   - 設定路徑別名 `@` 指向 `src`
   - 配置 Element Plus 自動導入
   - 設定開發伺服器 proxy（代理後端 API）
-- [ ] 建立專案資料夾結構
+- [x] 建立專案資料夾結構
   ```
   src/
   ├── api/                  # API 請求模組
@@ -122,8 +122,8 @@
 
 ### 任務 1.4：建立 Git Repository
 
-- [ ] 初始化 Git 倉庫
-- [ ] 建立 `.gitignore`（前後端）
+- [x] 初始化 Git 倉庫
+- [x] 建立 `.gitignore`（前後端）
 - [ ] 建立遠端倉庫（GitHub/GitLab）
 - [ ] 設定分支策略
   - `main`：正式環境
@@ -136,35 +136,35 @@
 ### 任務 1.5：設定環境變數
 
 **後端 `.env` 配置：**
-- [ ] 建立 `.env` 檔案
+- [x] 建立 `.env` 檔案
   ```env
   # Application
   NODE_ENV=development
   PORT=3000
   API_PREFIX=api/v1
-  
+
   # Database
   DB_HOST=localhost
   DB_PORT=5432
   DB_USERNAME=postgres
   DB_PASSWORD=your_password
   DB_DATABASE=vip_platform
-  
+
   # JWT
   JWT_SECRET=your_super_secret_key_here
   JWT_EXPIRES_IN=7d
   JWT_REFRESH_SECRET=your_refresh_secret_key
   JWT_REFRESH_EXPIRES_IN=30d
-  
+
   # CORS
   CORS_ORIGIN=http://localhost:5173
-  
+
   # Rate Limiting
   THROTTLE_TTL=60
   THROTTLE_LIMIT=10
   ```
-- [ ] 建立 `.env.example` 作為範本
-- [ ] 確保 `.env` 已加入 `.gitignore`
+- [x] 建立 `.env.example` 作為範本
+- [x] 確保 `.env` 已加入 `.gitignore`
 
 **前端 `.env` 配置：**
 - [ ] 建立 `.env.development`
@@ -176,25 +176,26 @@
 
 ### 任務 2.1：PostgreSQL 資料庫安裝與設定
 
-- [ ] 安裝 PostgreSQL 14+ 版本
+- [x] 安裝 PostgreSQL 14+ 版本
   - macOS: `brew install postgresql@14`
   - Linux: `sudo apt-get install postgresql-14`
   - Windows: 下載官方安裝程式
-- [ ] 啟動 PostgreSQL 服務
-- [ ] 建立資料庫
+  - **已使用 Docker 安裝** ✓
+- [x] 啟動 PostgreSQL 服務
+- [x] 建立資料庫
   ```sql
   CREATE DATABASE vip_platform;
   CREATE USER vip_admin WITH ENCRYPTED PASSWORD 'your_password';
   GRANT ALL PRIVILEGES ON DATABASE vip_platform TO vip_admin;
   ```
-- [ ] 測試連線
+- [x] 測試連線
 
 ---
 
 ### 任務 2.2：設計資料庫 Schema
 
 **Users 表（使用者）：**
-- [ ] 設計 `users` 表結構
+- [x] 設計 `users` 表結構
   ```sql
   CREATE TABLE users (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -208,13 +209,13 @@
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     last_login_at TIMESTAMP
   );
-  
+
   CREATE INDEX idx_users_username ON users(username);
   CREATE INDEX idx_users_vip_level ON users(vip_level);
   ```
 
 **Videos 表（影片）：**
-- [ ] 設計 `videos` 表結構
+- [x] 設計 `videos` 表結構
   ```sql
   CREATE TABLE videos (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -230,13 +231,13 @@
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
-  
+
   CREATE INDEX idx_videos_title ON videos(title);
   CREATE INDEX idx_videos_created_at ON videos(created_at DESC);
   ```
 
 **Images 表（圖片資訊）：**
-- [ ] 設計 `images` 表結構
+- [x] 設計 `images` 表結構
   ```sql
   CREATE TABLE images (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -249,13 +250,13 @@
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
-  
+
   CREATE INDEX idx_images_title ON images(title);
   CREATE INDEX idx_images_created_at ON images(created_at DESC);
   ```
 
 **Tags 表（標籤）：**
-- [ ] 設計 `tags` 表結構
+- [x] 設計 `tags` 表結構
   ```sql
   CREATE TABLE tags (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -263,13 +264,13 @@
     slug VARCHAR(50) UNIQUE NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
-  
+
   CREATE INDEX idx_tags_name ON tags(name);
   CREATE INDEX idx_tags_slug ON tags(slug);
   ```
 
 **Categories 表（分類）：**
-- [ ] 設計 `categories` 表結構
+- [x] 設計 `categories` 表結構
   ```sql
   CREATE TABLE categories (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -279,13 +280,13 @@
     parent_id UUID REFERENCES categories(id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   );
-  
+
   CREATE INDEX idx_categories_name ON categories(name);
   CREATE INDEX idx_categories_slug ON categories(slug);
   ```
 
 **Video_Tags 關聯表（影片-標籤 多對多）：**
-- [ ] 設計 `video_tags` 表結構
+- [x] 設計 `video_tags` 表結構
   ```sql
   CREATE TABLE video_tags (
     video_id UUID REFERENCES videos(id) ON DELETE CASCADE,
@@ -305,7 +306,7 @@
 - [ ] 設計 `image_categories` 表結構
 
 **Refresh_Tokens 表（刷新令牌）：**
-- [ ] 設計 `refresh_tokens` 表結構
+- [x] 設計 `refresh_tokens` 表結構
   ```sql
   CREATE TABLE refresh_tokens (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -320,20 +321,20 @@
 
 ### 任務 2.3：設定 TypeORM
 
-- [ ] 在 NestJS 安裝 TypeORM
-- [ ] 在 `app.module.ts` 配置 TypeORM
-- [ ] 設定資料庫連線參數
+- [x] 在 NestJS 安裝 TypeORM
+- [x] 在 `app.module.ts` 配置 TypeORM
+- [x] 設定資料庫連線參數
 
 ---
 
 ### 任務 2.4：建立 Entity 實體類別
 
-- [ ] 建立 User Entity (`src/entities/user.entity.ts`)
-- [ ] 建立 Video Entity (`src/entities/video.entity.ts`)
-- [ ] 建立 Image Entity (`src/entities/image.entity.ts`)
-- [ ] 建立 Tag Entity (`src/entities/tag.entity.ts`)
-- [ ] 建立 Category Entity (`src/entities/category.entity.ts`)
-- [ ] 建立 RefreshToken Entity (`src/entities/refresh-token.entity.ts`)
+- [x] 建立 User Entity (`src/entities/user.entity.ts`)
+- [x] 建立 Video Entity (`src/entities/video.entity.ts`)
+- [x] 建立 Image Entity (`src/entities/image.entity.ts`)
+- [x] 建立 Tag Entity (`src/entities/tag.entity.ts`)
+- [x] 建立 Category Entity (`src/entities/category.entity.ts`)
+- [x] 建立 RefreshToken Entity (`src/entities/refresh-token.entity.ts`)
 
 ---
 
@@ -344,8 +345,9 @@
 - [ ] 在 `package.json` 新增 migration 指令
 - [ ] 生成初始 migration
 - [ ] 執行 migration
-- [ ] 建立種子資料（Seed Data）
-  - 建立預設管理員帳號
+- [x] 建立種子資料（Seed Data）
+  - [x] 建立預設管理員帳號（admin / admin123）
+  - [x] 建立測試用戶（vip1user ~ vip6user / test123）
 
 ---
 
@@ -354,238 +356,238 @@
 ### 任務 3.1：認證模組開發
 
 **設定 JWT 策略：**
-- [ ] 安裝必要套件
-- [ ] 建立 `src/modules/auth/auth.module.ts`
-- [ ] 建立 JWT 策略 `src/modules/auth/strategies/jwt.strategy.ts`
-- [ ] 建立 DTO `src/modules/auth/dto/login.dto.ts`
-- [ ] 建立 Auth Service `src/modules/auth/auth.service.ts`
-  - 實作 `login()` 方法
-  - 實作 `logout()` 方法
-  - 實作 `refreshAccessToken()` 方法
-  - 實作 JWT Token 生成邏輯
-- [ ] 建立 Auth Controller `src/modules/auth/auth.controller.ts`
-  - POST `/auth/login` - 登入
-  - POST `/auth/logout` - 登出
-  - POST `/auth/refresh` - 刷新 Token
-- [ ] 建立 JWT Guard `src/common/guards/jwt-auth.guard.ts`
-- [ ] 建立 Public 裝飾器 `src/common/decorators/public.decorator.ts`
+- [x] 安裝必要套件
+- [x] 建立 `src/modules/auth/auth.module.ts`
+- [x] 建立 JWT 策略 `src/modules/auth/strategies/jwt.strategy.ts`
+- [x] 建立 DTO `src/modules/auth/dto/login.dto.ts`
+- [x] 建立 Auth Service `src/modules/auth/auth.service.ts`
+  - [x] 實作 `login()` 方法
+  - [x] 實作 `logout()` 方法
+  - [x] 實作 `refreshAccessToken()` 方法
+  - [x] 實作 JWT Token 生成邏輯
+- [x] 建立 Auth Controller `src/modules/auth/auth.controller.ts`
+  - [x] POST `/auth/login` - 登入
+  - [x] POST `/auth/logout` - 登出
+  - [x] POST `/auth/refresh` - 刷新 Token
+- [x] 建立 JWT Guard `src/common/guards/jwt-auth.guard.ts`
+- [x] 建立 Public 裝飾器 `src/common/decorators/public.decorator.ts`
 
 ---
 
 ### 任務 3.2：VIP 等級權限 Guard
 
-- [ ] 建立 VIP Level Guard `src/common/guards/vip-level.guard.ts`
-  - 檢查用戶 VIP 等級
-  - 根據需求等級判斷權限
-- [ ] 建立 VipLevel 裝飾器 `src/common/decorators/vip-level.decorator.ts`
-- [ ] 建立 Admin Guard `src/common/guards/admin.guard.ts`
-  - 檢查是否為管理員
+- [x] 建立 VIP Level Guard `src/common/guards/vip-level.guard.ts`
+  - [x] 檢查用戶 VIP 等級
+  - [x] 根據需求等級判斷權限
+- [x] 建立 VipLevel 裝飾器 `src/common/decorators/vip-level.decorator.ts`
+- [x] 建立 Admin Guard `src/common/guards/admin.guard.ts`
+  - [x] 檢查是否為管理員
 
 ---
 
 ### 任務 3.3：使用者管理模組
 
-- [ ] 建立 Users Module
+- [x] 建立 Users Module
   ```bash
   nest g module modules/users
   nest g service modules/users
   nest g controller modules/users
   ```
-- [ ] 建立 DTO
-  - `create-user.dto.ts` - 新增使用者
-  - `update-user.dto.ts` - 更新使用者
-  - `update-vip-level.dto.ts` - 更新 VIP 等級
-- [ ] 實作 Users Service
-  - `findAll()` - 取得使用者列表（支援分頁、搜尋）
-  - `findOne()` - 取得單一使用者
-  - `create()` - 新增使用者（密碼加密）
-  - `update()` - 更新使用者資訊
-  - `updateVipLevel()` - 更新 VIP 等級
-  - `remove()` - 刪除使用者
-  - `sanitizeUser()` - 移除敏感資訊（密碼）
-- [ ] 實作 Users Controller
-  - GET `/users` - 取得使用者列表
-  - GET `/users/:id` - 取得單一使用者
-  - POST `/users` - 新增使用者
-  - PATCH `/users/:id` - 更新使用者
-  - PATCH `/users/:id/vip-level` - 更新 VIP 等級
-  - DELETE `/users/:id` - 刪除使用者
-- [ ] 套用 JWT Guard 和 Admin Guard
+- [x] 建立 DTO
+  - [x] `create-user.dto.ts` - 新增使用者
+  - [x] `update-user.dto.ts` - 更新使用者
+  - [x] `update-vip-level.dto.ts` - 更新 VIP 等級
+- [x] 實作 Users Service
+  - [x] `findAll()` - 取得使用者列表（支援分頁、搜尋）
+  - [x] `findOne()` - 取得單一使用者
+  - [x] `create()` - 新增使用者（密碼加密）
+  - [x] `update()` - 更新使用者資訊
+  - [x] `updateVipLevel()` - 更新 VIP 等級
+  - [x] `remove()` - 刪除使用者
+  - [x] `sanitizeUser()` - 移除敏感資訊（密碼）
+- [x] 實作 Users Controller
+  - [x] GET `/users` - 取得使用者列表
+  - [x] GET `/users/:id` - 取得單一使用者
+  - [x] POST `/users` - 新增使用者
+  - [x] PATCH `/users/:id` - 更新使用者
+  - [x] PATCH `/users/:id/vip-level` - 更新 VIP 等級
+  - [x] DELETE `/users/:id` - 刪除使用者
+- [x] 套用 JWT Guard 和 Admin Guard
 
 ---
 
 ### 任務 3.4：影片管理模組
 
-- [ ] 建立 Videos Module
+- [x] 建立 Videos Module
   ```bash
   nest g module modules/videos
   nest g service modules/videos
   nest g controller modules/videos
   ```
-- [ ] 建立 DTO
-  - `create-video.dto.ts` - 新增影片
-  - `update-video.dto.ts` - 更新影片
-- [ ] 實作 Videos Service
-  - `findAll()` - 取得影片列表
+- [x] 建立 DTO
+  - [x] `create-video.dto.ts` - 新增影片
+  - [x] `update-video.dto.ts` - 更新影片
+- [x] 實作 Videos Service
+  - [x] `findAll()` - 取得影片列表
     - 支援分頁
     - 支援關鍵字搜尋（標題、描述）
     - 支援標籤篩選
     - 支援分類篩選
     - 根據用戶 VIP 等級過濾資訊
-  - `findOne()` - 取得單一影片
+  - [x] `findOne()` - 取得單一影片
     - 增加觀看次數
     - 根據用戶 VIP 等級返回權限資訊
-  - `create()` - 新增影片（關聯標籤、分類）
-  - `update()` - 更新影片
-  - `remove()` - 軟刪除影片
-  - `processVideoByVipLevel()` - 處理 VIP 權限
+  - [x] `create()` - 新增影片（關聯標籤、分類）
+  - [x] `update()` - 更新影片
+  - [x] `remove()` - 軟刪除影片
+  - [x] `processVideoByVipLevel()` - 處理 VIP 權限
     - VIP 1-2: previewOnly = true, previewDuration = 10
     - VIP 3-4: canWatch = true
-- [ ] 實作 Videos Controller
-  - GET `/videos` - 取得影片列表
-  - GET `/videos/:id` - 取得單一影片
-  - POST `/videos` - 新增影片（需要管理員）
-  - PATCH `/videos/:id` - 更新影片（需要管理員）
-  - DELETE `/videos/:id` - 刪除影片（需要管理員）
+- [x] 實作 Videos Controller
+  - [x] GET `/videos` - 取得影片列表
+  - [x] GET `/videos/:id` - 取得單一影片
+  - [x] POST `/videos` - 新增影片（需要管理員）
+  - [x] PATCH `/videos/:id` - 更新影片（需要管理員）
+  - [x] DELETE `/videos/:id` - 刪除影片（需要管理員）
 
 ---
 
 ### 任務 3.5：圖片資訊管理模組
 
-- [ ] 建立 Images Module
+- [x] 建立 Images Module
   ```bash
   nest g module modules/images
   nest g service modules/images
   nest g controller modules/images
   ```
-- [ ] 建立 DTO
-  - `create-image.dto.ts` - 新增圖片
-  - `update-image.dto.ts` - 更新圖片
-- [ ] 實作 Images Service
-  - `findAll()` - 取得圖片列表
+- [x] 建立 DTO
+  - [x] `create-image.dto.ts` - 新增圖片
+  - [x] `update-image.dto.ts` - 更新圖片
+- [x] 實作 Images Service
+  - [x] `findAll()` - 取得圖片列表
     - **檢查 VIP 等級 >= 5**
     - 支援分頁
     - 支援關鍵字搜尋
     - 支援標籤篩選
     - 支援分類篩選
-  - `findOne()` - 取得單一圖片
+  - [x] `findOne()` - 取得單一圖片
     - **檢查 VIP 等級 >= 5**
-  - `create()` - 新增圖片
-  - `update()` - 更新圖片
-  - `remove()` - 軟刪除圖片
-- [ ] 實作 Images Controller
-  - GET `/images` - 取得圖片列表（需要 VIP 5+）
-  - GET `/images/:id` - 取得單一圖片（需要 VIP 5+）
-  - POST `/images` - 新增圖片（需要管理員）
-  - PATCH `/images/:id` - 更新圖片（需要管理員）
-  - DELETE `/images/:id` - 刪除圖片（需要管理員）
-- [ ] 套用 VipLevelGuard (@VipLevel(5))
+  - [x] `create()` - 新增圖片
+  - [x] `update()` - 更新圖片
+  - [x] `remove()` - 軟刪除圖片
+- [x] 實作 Images Controller
+  - [x] GET `/images` - 取得圖片列表（需要 VIP 5+）
+  - [x] GET `/images/:id` - 取得單一圖片（需要 VIP 5+）
+  - [x] POST `/images` - 新增圖片（需要管理員）
+  - [x] PATCH `/images/:id` - 更新圖片（需要管理員）
+  - [x] DELETE `/images/:id` - 刪除圖片（需要管理員）
+- [x] 套用 VipLevelGuard (@VipLevel(5))
 
 ---
 
 ### 任務 3.6：標籤管理模組
 
-- [ ] 建立 Tags Module
+- [x] 建立 Tags Module
   ```bash
   nest g module modules/tags
   nest g service modules/tags
   nest g controller modules/tags
   ```
-- [ ] 建立 DTO
-  - `create-tag.dto.ts` - 新增標籤
-- [ ] 實作 Tags Service
-  - `findAll()` - 取得所有標籤
-  - `findOne()` - 取得單一標籤
-  - `create()` - 新增標籤（自動生成 slug）
-  - `remove()` - 刪除標籤
-- [ ] 實作 Tags Controller
-  - GET `/tags` - 取得標籤列表
-  - GET `/tags/:id` - 取得單一標籤
-  - POST `/tags` - 新增標籤（需要管理員）
-  - DELETE `/tags/:id` - 刪除標籤（需要管理員）
-- [ ] 使用 slugify 套件自動生成 slug
+- [x] 建立 DTO
+  - [x] `create-tag.dto.ts` - 新增標籤
+- [x] 實作 Tags Service
+  - [x] `findAll()` - 取得所有標籤
+  - [x] `findOne()` - 取得單一標籤
+  - [x] `create()` - 新增標籤（自動生成 slug）
+  - [x] `remove()` - 刪除標籤
+- [x] 實作 Tags Controller
+  - [x] GET `/tags` - 取得標籤列表
+  - [x] GET `/tags/:id` - 取得單一標籤
+  - [x] POST `/tags` - 新增標籤（需要管理員）
+  - [x] DELETE `/tags/:id` - 刪除標籤（需要管理員）
+- [x] 使用 slugify 套件自動生成 slug
 
 ---
 
 ### 任務 3.7：分類管理模組
 
-- [ ] 建立 Categories Module
+- [x] 建立 Categories Module
   ```bash
   nest g module modules/categories
   nest g service modules/categories
   nest g controller modules/categories
   ```
-- [ ] 建立 DTO
-  - `create-category.dto.ts` - 新增分類（支援父分類）
-- [ ] 實作 Categories Service
-  - `findAll()` - 取得所有分類（支援階層式）
-  - `findOne()` - 取得單一分類
-  - `create()` - 新增分類（支援父子關係）
-  - `update()` - 更新分類
-  - `remove()` - 刪除分類
-  - `getChildren()` - 取得子分類
-- [ ] 實作 Categories Controller
-  - GET `/categories` - 取得分類列表
-  - GET `/categories/:id` - 取得單一分類
-  - GET `/categories/:id/children` - 取得子分類
-  - POST `/categories` - 新增分類（需要管理員）
-  - PATCH `/categories/:id` - 更新分類（需要管理員）
-  - DELETE `/categories/:id` - 刪除分類（需要管理員）
+- [x] 建立 DTO
+  - [x] `create-category.dto.ts` - 新增分類（支援父分類）
+- [x] 實作 Categories Service
+  - [x] `findAll()` - 取得所有分類（支援階層式）
+  - [x] `findOne()` - 取得單一分類
+  - [x] `create()` - 新增分類（支援父子關係）
+  - [x] `update()` - 更新分類
+  - [x] `remove()` - 刪除分類
+  - [x] `getChildren()` - 取得子分類
+- [x] 實作 Categories Controller
+  - [x] GET `/categories` - 取得分類列表
+  - [x] GET `/categories/:id` - 取得單一分類
+  - [x] GET `/categories/:id/children` - 取得子分類
+  - [x] POST `/categories` - 新增分類（需要管理員）
+  - [x] PATCH `/categories/:id` - 更新分類（需要管理員）
+  - [x] DELETE `/categories/:id` - 刪除分類（需要管理員）
 
 ---
 
 ### 任務 3.8：搜尋功能模組
 
-- [ ] 建立 Search Module
-- [ ] 建立統一搜尋 API
-  - GET `/search?keyword=xxx&type=video|image`
+- [x] 建立 Search Module
+- [x] 建立統一搜尋 API
+  - [x] GET `/search?keyword=xxx&type=video|image`
   - 支援標籤、標題搜尋
   - 根據用戶 VIP 等級過濾結果
   - 支援搜尋結果排序（相關度、時間）
-- [ ] 實作 Search Service
-  - `searchVideos()` - 搜尋影片
-  - `searchImages()` - 搜尋圖片（VIP 5+）
-  - `searchAll()` - 全站搜尋
+- [x] 實作 Search Service
+  - [x] `searchVideos()` - 搜尋影片
+  - [x] `searchImages()` - 搜尋圖片（VIP 5+）
+  - [x] `searchAll()` - 全站搜尋
 
 ---
 
 ### 任務 3.9：全域配置
 
 **CORS 設定：**
-- [ ] 在 `main.ts` 啟用 CORS
-- [ ] 設定允許的來源 (CORS_ORIGIN)
-- [ ] 啟用憑證支援
+- [x] 在 `main.ts` 啟用 CORS
+- [x] 設定允許的來源 (CORS_ORIGIN)
+- [x] 啟用憑證支援
 
 **Rate Limiting：**
-- [ ] 安裝 `@nestjs/throttler`
-- [ ] 在 `app.module.ts` 配置
+- [x] 安裝 `@nestjs/throttler`
+- [x] 在 `app.module.ts` 配置
   - TTL: 60 秒
   - Limit: 10 次請求
 
 **Helmet Security：**
-- [ ] 安裝並啟用 helmet
-- [ ] 設定安全性 Headers
+- [x] 安裝並啟用 helmet
+- [x] 設定安全性 Headers
 
 **全域配置：**
-- [ ] 設定全域 API 前綴 (`api/v1`)
-- [ ] 啟用 ValidationPipe（全域驗證）
+- [x] 設定全域 API 前綴 (`api/v1`)
+- [x] 啟用 ValidationPipe（全域驗證）
   - whitelist: true
   - forbidNonWhitelisted: true
   - transform: true
 
 **Swagger API 文件：**
-- [ ] 安裝 `@nestjs/swagger`
-- [ ] 在 `main.ts` 配置 Swagger
+- [x] 安裝 `@nestjs/swagger`
+- [x] 在 `main.ts` 配置 Swagger
   - 標題: VIP Platform API
   - 版本: 1.0
   - 新增 Bearer Auth
-- [ ] 訪問路徑: `/api/docs`
+- [x] 訪問路徑: `/api/docs`
 
 **全域錯誤處理：**
-- [ ] 建立 HTTP Exception Filter
+- [x] 建立 HTTP Exception Filter
   - 統一錯誤回應格式
   - 記錄錯誤日誌
-- [ ] 在 `main.ts` 註冊全域 Filter
+- [x] 在 `main.ts` 註冊全域 Filter
 
 ---
 
@@ -593,14 +595,14 @@
 
 ### 任務 4.1：設定 Axios 與 API 請求封裝
 
-- [ ] 建立 Axios 實例 `src/api/axios.ts`
+- [x] 建立 Axios 實例 `src/api/axios.ts`
   - 設定 baseURL
   - 設定 timeout (15 秒)
   - 設定預設 headers
-- [ ] 實作請求攔截器
+- [x] 實作請求攔截器
   - 自動附加 JWT Token
   - 從 authStore 取得 accessToken
-- [ ] 實作響應攔截器
+- [x] 實作響應攔截器
   - 處理 401 錯誤（Token 過期）
     - 自動刷新 Token
     - 重新發送原請求
@@ -614,35 +616,35 @@
 
 ### 任務 4.2：建立 TypeScript 型別定義
 
-- [ ] 建立用戶型別 `src/types/user.d.ts`
+- [x] 建立用戶型別 `src/types/user.d.ts`
   - User 介面
   - CreateUserDto 介面
   - UpdateUserDto 介面
   - UpdateVipLevelDto 介面
-- [ ] 建立影片型別 `src/types/video.d.ts`
+- [x] 建立影片型別 `src/types/video.d.ts`
   - Video 介面
   - EmbedType 列舉
   - CreateVideoDto 介面
   - UpdateVideoDto 介面
   - VideoListParams 介面
   - VideoPermissions 介面
-- [ ] 建立圖片型別 `src/types/image.d.ts`
+- [x] 建立圖片型別 `src/types/image.d.ts`
   - Image 介面
   - CreateImageDto 介面
   - UpdateImageDto 介面
   - ImageListParams 介面
-- [ ] 建立標籤型別 `src/types/tag.d.ts`
+- [x] 建立標籤型別 `src/types/tag.d.ts`
   - Tag 介面
   - CreateTagDto 介面
-- [ ] 建立分類型別 `src/types/category.d.ts`
+- [x] 建立分類型別 `src/types/category.d.ts`
   - Category 介面（支援階層）
   - CreateCategoryDto 介面
-- [ ] 建立通用型別 `src/types/api.d.ts`
+- [x] 建立通用型別 `src/types/api.d.ts`
   - ApiResponse<T> 介面
   - PaginatedResponse<T> 介面
   - LoginResponse 介面
   - LoginDto 介面
-- [ ] 建立列舉 `src/types/enums.ts`
+- [x] 建立列舉 `src/types/enums.ts`
   - VipLevel 列舉 (1-6)
   - VipLevelLabels 對應表
   - VipLevelOptions 選項陣列
@@ -651,35 +653,35 @@
 
 ### 任務 4.3：建立 API 請求模組
 
-- [ ] 建立認證 API `src/api/auth.api.ts`
+- [x] 建立認證 API `src/api/auth.api.ts`
   - `login()` - 登入
   - `logout()` - 登出
   - `refresh()` - 刷新 Token
-- [ ] 建立使用者 API `src/api/user.api.ts`
+- [x] 建立使用者 API `src/api/user.api.ts`
   - `getUsers()` - 取得使用者列表
   - `getUser()` - 取得單一使用者
   - `createUser()` - 新增使用者
   - `updateUser()` - 更新使用者
   - `updateVipLevel()` - 更新 VIP 等級
   - `deleteUser()` - 刪除使用者
-- [ ] 建立影片 API `src/api/video.api.ts`
+- [x] 建立影片 API `src/api/video.api.ts`
   - `getVideos()` - 取得影片列表
   - `getVideo()` - 取得單一影片
   - `createVideo()` - 新增影片
   - `updateVideo()` - 更新影片
   - `deleteVideo()` - 刪除影片
-- [ ] 建立圖片 API `src/api/image.api.ts`
+- [x] 建立圖片 API `src/api/image.api.ts`
   - `getImages()` - 取得圖片列表
   - `getImage()` - 取得單一圖片
   - `createImage()` - 新增圖片
   - `updateImage()` - 更新圖片
   - `deleteImage()` - 刪除圖片
-- [ ] 建立標籤 API `src/api/tag.api.ts`
+- [x] 建立標籤 API `src/api/tag.api.ts`
   - `getTags()` - 取得標籤列表
   - `getTag()` - 取得單一標籤
   - `createTag()` - 新增標籤
   - `deleteTag()` - 刪除標籤
-- [ ] 建立分類 API `src/api/category.api.ts`
+- [x] 建立分類 API `src/api/category.api.ts`
   - `getCategories()` - 取得分類列表
   - `getCategory()` - 取得單一分類
   - `createCategory()` - 新增分類
@@ -689,7 +691,7 @@
 
 ### 任務 4.4：建立 Pinia Stores
 
-- [ ] 建立認證 Store `src/stores/auth.ts`
+- [x] 建立認證 Store `src/stores/auth.ts`
   - State
     - accessToken (存於 localStorage)
     - refreshToken (存於 localStorage)
@@ -702,7 +704,7 @@
     - `login()` - 登入並儲存 Token
     - `logout()` - 登出並清除資料
     - `refreshAccessToken()` - 刷新 Token
-- [ ] 建立使用者 Store `src/stores/user.ts`
+- [x] 建立使用者 Store `src/stores/user.ts`
   - State
     - users (使用者列表)
     - currentUser (當前查看的使用者)
@@ -715,7 +717,7 @@
     - `updateUser()` - 更新使用者
     - `updateVipLevel()` - 更新 VIP 等級
     - `deleteUser()` - 刪除使用者
-- [ ] 建立影片 Store `src/stores/video.ts`
+- [x] 建立影片 Store `src/stores/video.ts`
   - State
     - videos (影片列表)
     - currentVideo (當前播放的影片)
@@ -727,15 +729,15 @@
     - `createVideo()` - 新增影片
     - `updateVideo()` - 更新影片
     - `deleteVideo()` - 刪除影片
-- [ ] 建立圖片 Store `src/stores/image.ts`（結構類似 video store）
-- [ ] 建立標籤 Store `src/stores/tag.ts`
+- [x] 建立圖片 Store `src/stores/image.ts`（結構類似 video store）
+- [x] 建立標籤 Store `src/stores/tag.ts`
   - State
     - tags (標籤列表)
   - Actions
     - `fetchTags()` - 取得標籤列表
     - `createTag()` - 新增標籤
     - `deleteTag()` - 刪除標籤
-- [ ] 建立分類 Store `src/stores/category.ts`
+- [x] 建立分類 Store `src/stores/category.ts`
   - State
     - categories (分類列表)
   - Actions
@@ -747,13 +749,13 @@
 
 ### 任務 4.5：建立 Composables（組合式函式）
 
-- [ ] 建立權限判斷 Composable `src/composables/usePermission.ts`
+- [x] 建立權限判斷 Composable `src/composables/usePermission.ts`
   - `canWatchFullVideo` - 是否可觀看完整影片 (VIP 3+)
   - `canOnlyPreview` - 是否只能試看 (VIP 1-2)
   - `canAccessImages` - 是否可存取圖片 (VIP 5+)
   - `isAdmin` - 是否為管理員
   - `hasVipLevel(level)` - 檢查特定 VIP 等級
-- [ ] 建立影片播放器 Composable `src/composables/useVideoPlayer.ts`
+- [x] 建立影片播放器 Composable `src/composables/useVideoPlayer.ts`
   - State
     - currentTime (當前播放時間)
     - isPreviewEnded (試看是否結束)
@@ -765,7 +767,7 @@
     - 監聽播放時間
     - 10 秒後暫停並彈窗（VIP 1-2）
     - 完整播放（VIP 3+）
-- [ ] 建立分頁 Composable `src/composables/usePagination.ts`
+- [x] 建立分頁 Composable `src/composables/usePagination.ts`
   - State
     - page (當前頁數)
     - limit (每頁筆數)
@@ -778,7 +780,7 @@
     - `nextPage()` - 下一頁
     - `prevPage()` - 上一頁
     - `reset()` - 重置
-- [ ] 建立搜尋 Composable `src/composables/useSearch.ts`
+- [x] 建立搜尋 Composable `src/composables/useSearch.ts`
   - State
     - keyword (搜尋關鍵字)
     - isSearching (搜尋中)
@@ -791,7 +793,7 @@
 
 ### 任務 4.6：建立路由配置
 
-- [ ] 設定 Vue Router `src/router/index.ts`
+- [x] 設定 Vue Router `src/router/index.ts`
   - 定義路由結構
     - `/` - 重導向至 `/login`
     - `/login` - 登入頁
@@ -809,7 +811,7 @@
       - `/member/videos` - 影片列表
       - `/member/videos/:id` - 影片詳情
       - `/member/images` - 圖片資訊（需要 VIP 5+）
-- [ ] 實作路由守衛 `router.beforeEach()`
+- [x] 實作路由守衛 `router.beforeEach()`
   - 檢查是否需要登入 (requiresAuth)
   - 檢查是否需要管理員權限 (requiresAdmin)
   - 檢查 VIP 等級 (requiresVipLevel)
@@ -819,7 +821,7 @@
   - 未登入訪問需要認證的頁面 → `/login`
   - 非管理員訪問管理員頁面 → `/member`
   - VIP 等級不足 → 提示並導向
-- [ ] 設定路由 meta 資訊
+- [x] 設定路由 meta 資訊
   - requiresAuth
   - requiresAdmin
   - requiresVipLevel
@@ -828,7 +830,7 @@
 
 ### 任務 4.7：建立 Layout 版面
 
-- [ ] 建立管理員 Layout `src/layouts/AdminLayout.vue`
+- [x] 建立管理員 Layout `src/layouts/AdminLayout.vue`
   - 側邊選單（Sidebar）
     - Logo 區域
     - 導航選單
@@ -846,7 +848,7 @@
     - 使用 Element Plus Container 組件
     - 深色側邊欄 (#001529)
     - 固定高度 100vh
-- [ ] 建立會員 Layout `src/layouts/MemberLayout.vue`
+- [x] 建立會員 Layout `src/layouts/MemberLayout.vue`
   - 頂部 Header
     - 左側：Logo 和標題
     - 中間：水平導航選單
@@ -864,7 +866,7 @@
 
 ### 任務 4.8：建立登入頁面
 
-- [ ] 建立登入頁面 `src/views/auth/Login.vue`
+- [x] 建立登入頁面 `src/views/auth/Login.vue`
   - 頁面結構
     - 置中登入卡片
     - 標題：VIP 會員平台
@@ -895,7 +897,7 @@
 
 #### **使用者管理頁面**
 
-- [ ] 建立使用者列表 `src/views/admin/users/UserList.vue`
+- [x] 建立使用者列表 `src/views/admin/users/UserList.vue`
   - 頂部工具列
     - 左側：標題「使用者管理」
     - 右側：新增使用者按鈕
@@ -927,7 +929,7 @@
 
 #### **影片管理頁面**
 
-- [ ] 建立影片列表 `src/views/admin/videos/VideoList.vue`
+- [x] 建立影片列表 `src/views/admin/videos/VideoList.vue`
   - 頂部工具列
     - 左側：標題「影片管理」
     - 右側：新增影片按鈕
@@ -952,7 +954,7 @@
     - 刪除影片
     - 導向新增/編輯頁面
 
-- [ ] 建立影片表單 `src/views/admin/videos/VideoForm.vue`
+- [x] 建立影片表單 `src/views/admin/videos/VideoForm.vue`
   - 用於新增和編輯影片
   - 表單欄位
     - 標題（必填）
@@ -977,7 +979,7 @@
 
 #### **圖片管理頁面**
 
-- [ ] 建立圖片列表 `src/views/admin/images/ImageList.vue`
+- [x] 建立圖片列表 `src/views/admin/images/ImageList.vue`
   - 頂部工具列
     - 左側：標題「圖片資訊管理」
     - 右側：新增圖片按鈕
@@ -998,7 +1000,7 @@
     - 刪除圖片
     - 導向新增/編輯頁面
 
-- [ ] 建立圖片表單 `src/views/admin/images/ImageForm.vue`
+- [x] 建立圖片表單 `src/views/admin/images/ImageForm.vue`
   - 表單欄位
     - 標題（必填）
     - 描述
@@ -1017,7 +1019,7 @@
 
 #### **標籤管理頁面**
 
-- [ ] 建立標籤列表 `src/views/admin/tags/TagList.vue`
+- [x] 建立標籤列表 `src/views/admin/tags/TagList.vue`
   - 頂部工具列
     - 左側：標題「標籤管理」
     - 右側：新增標籤按鈕
@@ -1034,7 +1036,7 @@
 
 #### **分類管理頁面**
 
-- [ ] 建立分類列表 `src/views/admin/categories/CategoryList.vue`
+- [x] 建立分類列表 `src/views/admin/categories/CategoryList.vue`
   - 頂部工具列
     - 左側：標題「分類管理」
     - 右側：新增分類按鈕
@@ -1055,7 +1057,7 @@
 
 #### **影片列表頁面**
 
-- [ ] 建立影片列表 `src/views/member/videos/VideoList.vue`
+- [x] 建立影片列表 `src/views/member/videos/VideoList.vue`
   - 頂部區域
     - 頁面標題「影片專區」
     - 搜尋框
@@ -1083,7 +1085,7 @@
 
 #### **影片詳情/播放頁面**
 
-- [ ] 建立影片詳情 `src/views/member/videos/VideoDetail.vue`
+- [x] 建立影片詳情 `src/views/member/videos/VideoDetail.vue`
   - 影片播放區
     - 嵌入式播放器
       - 使用 iframe 或 video 標籤
@@ -1114,7 +1116,7 @@
 
 #### **圖片資訊頁面（VIP 5+ 限定）**
 
-- [ ] 建立圖片列表 `src/views/member/images/ImageList.vue`
+- [x] 建立圖片列表 `src/views/member/images/ImageList.vue`
   - 權限檢查
     - 頁面載入前檢查 VIP 等級
     - VIP < 5: 顯示權限不足提示
@@ -1584,53 +1586,53 @@
 ## 核心功能檢查清單
 
 ### 認證與授權
-- [ ] JWT 認證機制
-- [ ] 登入/登出功能
-- [ ] Token 刷新機制
-- [ ] 管理員權限檢查
-- [ ] VIP 等級權限檢查
+- [x] JWT 認證機制
+- [x] 登入/登出功能
+- [x] Token 刷新機制
+- [x] 管理員權限檢查
+- [x] VIP 等級權限檢查
 
 ### 使用者管理
-- [ ] 手動新增使用者
-- [ ] 編輯使用者資訊
-- [ ] 更新 VIP 等級
-- [ ] 刪除使用者
-- [ ] 使用者列表（分頁、搜尋）
+- [x] 手動新增使用者
+- [x] 編輯使用者資訊
+- [x] 更新 VIP 等級
+- [x] 刪除使用者
+- [x] 使用者列表（分頁、搜尋）
 
 ### 影片管理
-- [ ] 影片 CRUD
-- [ ] 影片嵌入（YouTube/Vimeo/Google Drive）
-- [ ] 標籤與分類關聯
-- [ ] 搜尋與篩選
-- [ ] VIP 1-2：試看 10 秒機制
-- [ ] VIP 3-4：完整觀看
-- [ ] 觀看次數統計
+- [x] 影片 CRUD
+- [x] 影片嵌入（YouTube/Vimeo/Google Drive）
+- [x] 標籤與分類關聯
+- [x] 搜尋與篩選
+- [x] VIP 1-2：試看 10 秒機制
+- [x] VIP 3-4：完整觀看
+- [x] 觀看次數統計
 
 ### 圖片資訊管理
-- [ ] 圖片 CRUD
-- [ ] 標籤與分類關聯
-- [ ] 搜尋與篩選
-- [ ] VIP 5-6：可存取
-- [ ] VIP < 5：點擊攔截
+- [x] 圖片 CRUD
+- [x] 標籤與分類關聯
+- [x] 搜尋與篩選
+- [x] VIP 5-6：可存取
+- [x] VIP < 5：點擊攔截
 
 ### 標籤與分類
-- [ ] 標籤 CRUD
-- [ ] 分類 CRUD（支援階層）
-- [ ] 自動生成 Slug
+- [x] 標籤 CRUD
+- [x] 分類 CRUD（支援階層）
+- [x] 自動生成 Slug
 
 ### 前台功能
-- [ ] 登入介面
-- [ ] 影片瀏覽（卡片式）
-- [ ] 影片播放（含權限控制）
-- [ ] 圖片瀏覽（VIP 5+）
-- [ ] 搜尋與篩選
+- [x] 登入介面
+- [x] 影片瀏覽（卡片式）
+- [x] 影片播放（含權限控制）
+- [x] 圖片瀏覽（VIP 5+）
+- [x] 搜尋與篩選
 
 ### 後台功能
-- [ ] 使用者管理介面
-- [ ] 影片管理介面
-- [ ] 圖片管理介面
-- [ ] 標籤管理介面
-- [ ] 分類管理介面
+- [x] 使用者管理介面
+- [x] 影片管理介面
+- [x] 圖片管理介面
+- [x] 標籤管理介面
+- [x] 分類管理介面
 
 ---
 
@@ -1673,4 +1675,5 @@
 
 ---
 
-**最後更新日期**: 2025-02-07
+**最後更新日期**: 2026-02-08
+
