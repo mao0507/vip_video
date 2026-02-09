@@ -1,0 +1,22 @@
+{
+  "name": "vip-video-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VIP 會員影片平台 - Monorepo",
+  "scripts": {
+    "dev:backend": "cd backend && pnpm start:dev",
+    "dev:frontend": "cd frontend && pnpm dev",
+    "build:backend": "cd backend && pnpm build",
+    "build:frontend": "cd frontend && pnpm build",
+    "lint:backend": "cd backend && pnpm lint",
+    "lint:frontend": "cd frontend && pnpm lint",
+    "lint": "pnpm lint:backend && pnpm lint:frontend",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "eslint": "^10.0.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.8.1"
+  }
+}
