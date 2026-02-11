@@ -1,0 +1,7 @@
+export { authApi } from './auth.api'
+export { userApi } from './user.api'
+export { videoApi } from './video.api'
+export { imageApi } from './image.api'
+export { tagApi } from './tag.api'
+export { categoryApi } from './category.api'
+export { default as api } from './axios'
